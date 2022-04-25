@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-RAZOR_KEY_ID = "rzp_test_gdjyj1HRIDguhr"
-RAZOR_KEY_SECRET = "E6NPuEMzr86n8q4Xl1MNl5y6"
+RAZOR_KEY_ID = "*********************"
+RAZOR_KEY_SECRET = "******************"
 
 from django.shortcuts import render
 import razorpay
