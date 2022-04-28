@@ -19,3 +19,6 @@ class Artist(models.Model):
     # password = models.CharField(max_length=100,null=True)
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return str(self.user)

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+    <body>
+        <form action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="q" placeholder="Enter your product name to search">
+        </form>
+    </body>
+</html>

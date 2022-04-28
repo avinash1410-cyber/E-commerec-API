@@ -12,7 +12,7 @@ from rest_framework.response import Response
 class OrderAPIView(APIView):
     # template_name = "api/login.html"
     #    @method_decorator(login_required(login_url='/login'))
-    @method_decorator(login_required)
+    @method_decorator(login_required(login_url='login'))
     def get(self, request, pk=None, format=None):
         if pk:
             data = Order.objects.get(id=pk)
@@ -24,7 +24,7 @@ class OrderAPIView(APIView):
         return Response(serializer.data)
 
     #   @method_decorator(login_required(login_url='/login'))
-    @method_decorator(login_required)
+    @method_decorator(login_required(login_url='login'))
     def post(self, request, format=None):
         data = request.data
         serializer = OrderSerializer(data=data)
@@ -39,7 +39,7 @@ class OrderAPIView(APIView):
         return response
 
 #  @method_decorator(login_required(login_url='/login'))
-    @method_decorator(login_required)
+    @method_decorator(login_required(login_url='login'))
     def put(self, request, pk=None, format=None):
         todo_to_update = Order.objects.get(pk=pk)
         serializer = OrderSerializer(instance=todo_to_update,data=request.data, partial=True)
@@ -58,7 +58,7 @@ class OrderAPIView(APIView):
         return response
 
   #  @method_decorator(login_required(login_url='/login'))
-    @method_decorator(login_required)
+    @method_decorator(login_required(login_url='login'))
     def delete(self, request, pk, format=None):
         todo_to_delete =  Order.objects.get(pk=pk)
 

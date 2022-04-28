@@ -62,7 +62,7 @@ class ArtistAPIView(APIView):
         serializer.save()
         response = Response()
         response.data = {
-            'message': 'Todo Created Successfully',
+            'message': 'Artist Created Successfully',
             'data': serializer.data
         }
         return response

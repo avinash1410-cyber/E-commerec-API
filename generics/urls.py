@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import home
+from .views import search,get_products_by_date
 
 urlpatterns = [
-    path('',home,name="home"),
+    #path('',search,name="home"),
+    path('',get_products_by_date,name="home"),
     path('admin/', admin.site.urls,name="login"),
     path('api/', include('api.urls')),
     path('cart/', include('cart.urls')),
@@ -13,5 +14,4 @@ urlpatterns = [
     path('order/', include('order.urls')),
     path('product/', include('product.urls')),
     path('artist/', include('artist.urls')),
-    path('payments/', include('payments.urls')),
 ]
