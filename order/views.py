@@ -14,6 +14,8 @@ class OrderAPIView(APIView):
     #    @method_decorator(login_required(login_url='/login'))
     @method_decorator(login_required(login_url='login'))
     def get(self, request, pk=None, format=None):
+        user = self.request.user
+        print(user)
         if pk:
             data = Order.objects.get(id=pk)
             serializer = OrderSerializer(data)
@@ -67,39 +69,3 @@ class OrderAPIView(APIView):
         return Response({
             'message': 'Todo Deleted Successfully'
         })
-
-
-# Create your views here.
-# class OrderView(LoginRequiredMixin,
-#     mixins.CreateModelMixin,
-#                       generics.GenericAPIView):
-#     queryset=Order.objects.all()
-#     serializers_class=OrderSerializers
-#     permission_classes = [IsAuthenticated]
-
-#     def post(self, request, *args, **kwargs):
-#         print("order post")
-#         return self.create(request, *args, **kwargs)
-
-
-# class OrderItemView(LoginRequiredMixin,
-#                     mixins.RetrieveModelMixin,
-#                     generics.GenericAPIView):
-#     queryset=OrderItem.objects.all()
-#     serializers_class=OrderItemSerializer
-#     permission_classes = [IsAuthenticated]
-#     lookup_field="pk"
-#     def retrieve(self, request, *args, **kwargs):
-#         print("in order retrieve")
-#         return self.create(request, *args, **kwargs)
-
-
-
-
-
-
-
-
-
-
-

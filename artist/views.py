@@ -3,13 +3,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.views import APIView
 from .models import Artist
 from .serializers import ArtistSerializer
 from rest_framework.response import Response
-
+from design.models import Design
+from design.serializers import DesignSerializer
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -51,7 +53,6 @@ class ArtistAPIView(APIView):
         else:
             data = Artist.objects.all()
             serializer = ArtistSerializer(data,many=True)
-
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -92,3 +93,28 @@ class ArtistAPIView(APIView):
         return Response({
             'message': 'Todo Deleted Successfully'
         })
+
+
+
+class ArtistDesignAPIView(APIView):
+    def get(self, request, pk=None):
+        # cust = Customer.objects.get(user=request.user)
+        # data = {
+        #     "image": cust.image,
+        #     "user": cust.user.id
+        # }
+        # serializer = ArtistSerializer(data=data)
+        # serializer.is_valid(raise_exception=True)
+
+        if pk:
+            artist = Artist.objects.get(id=pk)
+            design = Design.objects.filter(user_id=artist.id)
+            # data = {
+            #     "image": design.img,
+            #     "user": artist.user
+            # }
+            designSerializer = DesignSerializer(data=design,many=True)
+            designSerializer.is_valid()
+            return Response(designSerializer.data)
+        else:
+            return HttpResponse("Select a Artist Firts")
