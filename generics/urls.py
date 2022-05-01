@@ -16,4 +16,5 @@ urlpatterns = [
     path('artist/', include('artist.urls')),
     path('pay/', include('paytm.urls')),
     path('designs/', include('design.urls')),
+    path('offers/', include('offer.urls')),
 ]

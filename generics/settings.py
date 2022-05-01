@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'artist',
     'paytm',
     'design',
+    'offer',
 ]
 
 MIDDLEWARE = [
